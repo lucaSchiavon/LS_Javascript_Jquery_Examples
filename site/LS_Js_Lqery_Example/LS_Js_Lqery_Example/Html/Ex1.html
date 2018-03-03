@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #container {
+            width: 960px;
+            margin: 0 auto;
+            font-size: 13px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .esempio-easing {
+            cursor: pointer;
+            position: relative;
+            background: #FC0;
+            padding: 5px;
+            width: 100px;
+            text-align: center;
+        }
+
+        .fine {
+            position: relative;
+            background: #00ff90;
+            padding: 5px;
+            width: 100px;
+            text-align: center;
+            left: 500px;
+        }
+
+        .drag {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+
+    <script src="/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="/Scripts/jquery.easing.1.3.js"></script>
+    <script src="/Scripts/jquery-ui-1.12.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#easBounce').click(function () {
+                $('.complete').remove();
+                $(this).animate({ left: 500 }, 500, 'easeOutBounce', function () { $(this).after('<div class="fine">fine</div>'); });
+            });
+            $('#draggable').draggable();
+            $('#droppable').droppable()
+        });
+    </script>
+
+
+
+</head>
+<body>
+    <div id="container">
+        <div class="esempio-easing" id="easBounce">Effetto di rimbalzo</div>
+        <!--<div class="esempio-easing" id="easElastic">Effetto elastico</div>
+    <div class="esempio-easing" id="easOutBack">Effetto frenata e rimbalzo</div>-->
+        <div id="draggable" class="drag">drag me around</div>
+        <div id="droppable" class="drag">drop</div>
+    </div>
+</body>
+</html>

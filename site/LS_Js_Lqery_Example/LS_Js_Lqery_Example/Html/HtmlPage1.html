@@ -1,0 +1,78 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex,follow">
+    <title>Demo effetti di easing con jQuery</title>
+    <style>
+        #container {
+            width: 960px;
+            margin: 0 auto;
+            font-size: 13px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .esempio-easing {
+            cursor: pointer;
+            position: relative;
+            background: #FC0;
+            padding: 5px;
+            width: 100px;
+            text-align: center;
+        }
+    </style>
+    <script src="/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="/Scripts/jquery.easing.1.3.js"></script>
+ 
+    <script>
+        $(document).ready(function () {
+            //EFFETTO DI RIMBALZO
+            $('#easBounce').click(function () {
+                $(".complete").remove();
+                $(this).animate({
+                    left: 500
+                }, 500, 'easeOutBounce', function () {
+                    $(this).animate({
+                        left: 0
+                    }, 500, 'easeOutBounce', function () {
+                        $(this).after('<div class="complete">Animazione completata.</div>');
+                    });
+                });
+            });
+            //EFFETTO ELASTICO
+            $('#easElastic').click(function () {
+                $(".complete").remove();
+                $(this).animate({
+                    left: 500
+                }, 500, 'easeOutElastic', function () {
+                    $(this).animate({
+                        left: 0
+                    }, 500, 'easeOutElastic', function () {
+                        $(this).after('<div class="complete">Animazione completata.</div>');
+                    });
+                });
+            });
+            //EFFETTO FRENATA E RIMBAZO
+            $('#easOutBack').click(function () {
+                $(".complete").remove();
+                $(this).animate({
+                    left: 500
+                }, 500, 'easeOutBack', function () {
+                    $(this).animate({
+                        left: 0
+                    }, 500, 'easeOutBack', function () {
+                        $(this).after('<div class="complete">Animazione completata.</div>');
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div class="esempio-easing" id="easBounce">Effetto di rimbalzo</div>
+        <div class="esempio-easing" id="easElastic">Effetto elastico</div>
+        <div class="esempio-easing" id="easOutBack">Effetto frenata e rimbalzo</div>
+    </div>
+</body>
+</html>
